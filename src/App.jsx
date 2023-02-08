@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Button, Nav, Stack, ButtonGroup } from 'react-bootstrap'
 import { useAuth0 } from "@auth0/auth0-react";
+import { Routes, Route } from 'react-router';
 
 //components
 import LoginButton from './components/LoginButton'
@@ -8,6 +9,7 @@ import LogoutButton from './components/LogoutButton'
 import Profile from './components/Profile';
 import NavBar from './components/NavBar';
 import PostFeed from './components/PostFeed';
+import WelcomePage from './components/WelcomePage';
 
 function App() {
   const postDummyData = [
@@ -48,12 +50,15 @@ function App() {
 
 
   return (
+
+
+
+
+
+    
     <Stack>
       <NavBar />
-      <Stack gap={2} className='mt-5'>
-        <h1 className='text-center fw-bold' style={{fontSize: '6em'}}>Dyd</h1>
-        <h2 className='text-center text-secondary'>Share what you dyd.</h2>
-      </Stack>
+     <WelcomePage />
       {isLoading && <h2>Loading...</h2>}
       {!isAuthenticated && <h2 className='text-center'>Sign in to See Feed</h2>}
       {isAuthenticated && (
