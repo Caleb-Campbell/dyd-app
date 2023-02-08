@@ -13,12 +13,13 @@ export default function WelcomePage({ isAuthenticated }) {
       </h1>
       <h2 className="text-center text-secondary">Share what you dyd.</h2>
       {!isAuthenticated ? (
-        <LoginButton />
+        <LoginButton width="50" />
       ) : (
         <Button
           onClick={() => {
             navigate("/feed");
           }}
+          className="w-50 mx-auto"
         >
           Go to Feed
         </Button>

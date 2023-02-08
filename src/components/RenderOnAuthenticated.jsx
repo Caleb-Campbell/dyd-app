@@ -1,4 +1,5 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 import PostFeed from "./PostFeed";
 
 export default function RenderOnAuthenticated({
@@ -8,10 +9,10 @@ export default function RenderOnAuthenticated({
 }) {
   return (
     <>
-      {isLoading && <h2>Loading...</h2>}
-      {!isAuthenticated && <h2 className="text-center">Sign in to See Feed</h2>}
-      {isAuthenticated && <PostFeed posts={posts} />}
-      {/* <Button onClick={()=>{console.log(user)}}>Get User Info</Button> */}
+      {isLoading && <h3>Loading Feed...</h3>}
+      <Container>
+        <PostFeed posts={posts} />
+      </Container>
     </>
   );
 }

@@ -8,6 +8,7 @@ import NavBar from "./components/NavBar";
 import WelcomePage from "./components/WelcomePage";
 import RenderOnAuthenticated from "./components/RenderOnAuthenticated";
 import PostFeed from "./components/PostFeed";
+import ProfileView from "./components/ProfileView";
 
 function App() {
   const postDummyData = [
@@ -66,9 +67,14 @@ function App() {
         <Route
           path="/feed"
           element={
-            isAuthenticated ? <RenderOnAuthenticated /> : <WelcomePage />
+            isAuthenticated ? (
+              <RenderOnAuthenticated posts={posts} />
+            ) : (
+              <WelcomePage />
+            )
           }
         />
+        <Route path="profile-view" element={<ProfileView user={user} />} />
       </Routes>
     </>
   );

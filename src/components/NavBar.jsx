@@ -12,7 +12,13 @@ export default function NavBar() {
   return (
     <Nav className="justify-content-between p-3">
       <Nav.Item>
-        <img style={{ width: "2em" }} src={profilePlaceholder} />
+        <img
+          style={{ width: "2em" }}
+          src={profilePlaceholder}
+          onClick={() => {
+            navigate("profile-view");
+          }}
+        />
       </Nav.Item>
       <Nav.Item
         onClick={() => {

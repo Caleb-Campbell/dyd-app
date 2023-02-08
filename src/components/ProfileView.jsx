@@ -1,7 +1,14 @@
-import React from 'react'
+import React from "react";
+import { Card, Stack } from "react-bootstrap";
+import LoginButton from "./LoginButton";
+import Profile from "./Profile";
 
-export default function ProfileView() {
+export default function ProfileView({ isAuthenticated }) {
   return (
-    <div>ProfileView</div>
-  )
+    <>
+      <Stack>
+        {isAuthenticated ? <Profile /> : <LoginButton width={50} />}
+      </Stack>
+    </>
+  );
 }
