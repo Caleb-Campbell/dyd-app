@@ -74,7 +74,12 @@ function App() {
             )
           }
         />
-        <Route path="profile-view" element={<ProfileView user={user} />} />
+        <Route
+          path="profile-view"
+          element={
+            <ProfileView isAuthenticated={isAuthenticated} user={user} />
+          }
+        />
       </Routes>
     </>
   );
