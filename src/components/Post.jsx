@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Carousel, Image } from 'react-bootstrap'
+import { Card, Carousel, Image, Button } from 'react-bootstrap'
 
 export default function Post({post}) {
 
@@ -7,7 +7,7 @@ export default function Post({post}) {
 
 
   return (
-    <Card  className='bg-secondary'>
+    <Card  className='bg-dark'>
         {
             post.img.length >= 2 && (
                 <Carousel style={{height: '200px'}}>
@@ -24,12 +24,15 @@ export default function Post({post}) {
         }
         
         <Card.Body>
-            <Card.Title>{post.title}</Card.Title>
-            <Card.Title>{post.author}</Card.Title>
-            <Card.Text>{post.text}</Card.Text>
+            <Card.Title className='text-light'>{post.title}</Card.Title>
+            <Card.Title className='text-light'>{post.author}</Card.Title>
+            <Card.Text className='text-light'>{post.text}</Card.Text>
         </Card.Body>
-        <Card.Footer>
-            <p className='text-right'>{post.date}</p>
+        <Card.Footer className='justify-content-between'>
+            <p className='text-light'>{post.date}</p>
+            {post.categories.map(category => {
+                return <Button className='mx-2' variant='outline-secondary'>{category}</Button>
+            })}
         </Card.Footer>
     </Card>
   )
