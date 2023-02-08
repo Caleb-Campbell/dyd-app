@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { Nav, Stack } from 'react-bootstrap'
+import { ButtonGroup, Nav, Stack } from 'react-bootstrap'
 import LoginButton from './components/LoginButton'
 import LogoutButton from './components/LogoutButton'
 import { useAuth0 } from "@auth0/auth0-react";
+import Profile from './components/Profile';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true)
@@ -17,10 +18,10 @@ function App() {
           <h3>Logo</h3>
         </Nav.Item>
         <Nav.Item>
-          <div>
+          <ButtonGroup>
           <LoginButton>Login</LoginButton>
-          {loggedIn && <LogoutButton>Logout</LogoutButton>}
-          </div>
+          <LogoutButton>Logout</LogoutButton>
+          </ButtonGroup>
         </Nav.Item>
       </Nav>
       <Stack gap={2} className='mt-5'>
@@ -29,6 +30,9 @@ function App() {
       </Stack>
       {isLoading && <h2>Loading...</h2>}
       <h2 className='text-center'>User is {isAuthenticated ? 'Authenticated' : 'Not Authenticated'}</h2>
+      {isAuthenticated && (
+        <Profile />
+      )}
     </Stack>
   )
 }
