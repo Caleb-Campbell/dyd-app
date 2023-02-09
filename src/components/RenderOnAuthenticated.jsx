@@ -1,6 +1,5 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import NewPostButton from "./NewPostButton";
 import PostFeed from "./PostFeed";
 
 export default function RenderOnAuthenticated({
@@ -14,7 +13,6 @@ export default function RenderOnAuthenticated({
       <Container>
         <PostFeed posts={posts} />
       </Container>
-      <NewPostButton />
     </>
   );
 }
