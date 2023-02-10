@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-export default function NewPostButton() {
+export default function NewPostButton({ toggle }) {
   return (
     <Button
       style={{
@@ -10,6 +10,7 @@ export default function NewPostButton() {
         bottom: "20px",
       }}
       variant="info"
+      onClick={toggle}
     >
       ➕
     </Button>

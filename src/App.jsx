@@ -9,6 +9,11 @@ import WelcomePage from "./components/WelcomePage";
 import RenderOnAuthenticated from "./components/RenderOnAuthenticated";
 import PostFeed from "./components/PostFeed";
 import ProfileView from "./components/ProfileView";
+import NewPostButton from "./components/NewPostButton";
+import NewPostModal from "./components/NewPostModal";
+
+//utils
+import { getPosts } from "./utils";
 
 function App() {
   const postDummyData = [
@@ -50,13 +55,25 @@ function App() {
   ];
   const [loggedIn, setLoggedIn] = useState(true);
   const [posts, setPosts] = useState(postDummyData);
+  const [newPostModal, setNewPostModal] = useState(false);
 
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isLoading } = useAuth0();
+  // const { isAuthenticated } = useAuth0()
+
+  const newPost = () => {};
+  const toggleModal = () => {
+    setNewPostModal(!newPostModal);
+  };
+
+  let isAuthenticated = true;
 
   return (
     <>
       <Stack>
+        <Button onClick={getPosts}>Get Posts</Button>
         <NavBar />
+        {isAuthenticated && <NewPostButton toggle={toggleModal} />}
+        <NewPostModal toggle={toggleModal} show={newPostModal} />
       </Stack>
       <Routes>
         <Route
