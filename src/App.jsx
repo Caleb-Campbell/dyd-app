@@ -15,23 +15,24 @@ import NewPostModal from "./components/NewPostModal";
 function App() {
   const [newPostModal, setNewPostModal] = useState(false);
 
-  const newPost = () => {};
   const toggleModal = () => {
     setNewPostModal(!newPostModal);
   };
+
+  const newPost = () => {};
 
   return (
     <>
       <Stack>
         <NavBar />
-        <NewPostButton toggle={toggleModal} />
-        <NewPostModal toggle={toggleModal} show={newPostModal} />
       </Stack>
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
 
         <Route path="profile-view" element={<ProfileView />} />
       </Routes>
+      <NewPostButton toggle={toggleModal} />
+      <NewPostModal toggle={toggleModal} show={newPostModal} />
     </>
   );
 }

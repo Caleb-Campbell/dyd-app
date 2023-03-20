@@ -23,13 +23,11 @@ export default function LandingPage() {
 
     if (error) {
       setFetchError("Could not fetch");
-      console.log(error);
       setPosts(null);
     }
 
     if (data) {
       setPosts(data);
-      console.log(data);
       setFetchError(null);
     }
   };
@@ -51,8 +49,6 @@ export default function LandingPage() {
         Go to Feed
       </Button> */}
       {posts && <PostFeed posts={posts} />}
-      <NewPostButton />
-      <NewPostModal />
     </Stack>
   );
 }

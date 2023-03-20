@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import supabase from "../config/supabaseClient";
 import {
   Container,
   FormControl,
@@ -12,6 +13,7 @@ export default function NewPostModal({ show, toggle }) {
   const [title, setTitle] = useState("");
   const [link, setLink] = useState("");
   const [description, setDescription] = useState("");
+  const [message, setMessage] = useState();
 
   const handleChanges = (e) => {
     if (e.target.id === "title") {
@@ -25,7 +27,26 @@ export default function NewPostModal({ show, toggle }) {
     }
   };
 
-  const submitNewPost = () => {};
+  const submitNewPost = (e) => {
+    e.preventDefault();
+    const newRow = {
+      title: title,
+      post_img_link: link,
+      caption: description,
+    };
+    insertPost(newRow);
+  };
+
+  const insertPost = async (newPost) => {
+    const { data, error } = await supabase.from("Posts").insert([newPost]);
+
+    if (data) {
+      console.log(data);
+    }
+    if (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Modal onHide={toggle} show={show}>
@@ -33,7 +54,7 @@ export default function NewPostModal({ show, toggle }) {
         <Modal.Title>New Post</Modal.Title>
       </Modal.Header>
       <Stack>
-        <Form className="p-5">
+        <Form onSubmit={submitNewPost} className="p-5">
           <Form.Label> Post Title</Form.Label>
           <FormControl
             onChange={handleChanges}
@@ -55,7 +76,7 @@ export default function NewPostModal({ show, toggle }) {
             <a href="https://imgbb.com/">ImgBB</a> and host your image there,
             then insert the link.{" "}
           </p>
-          <Form.Label> Description</Form.Label>
+          <Form.Label> Caption</Form.Label>
           <FormControl
             onChange={handleChanges}
             value={description}

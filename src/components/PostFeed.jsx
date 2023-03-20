@@ -7,7 +7,7 @@ export default function PostFeed({ posts }) {
   return (
     <Stack className="m-1" gap={3}>
       {posts.map((post, index) => {
-        return <Post post={post} />;
+        return <Post key={index} post={post} />;
       })}
     </Stack>
   );
