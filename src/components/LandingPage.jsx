@@ -5,11 +5,14 @@ import LoginButton from "./LoginButton";
 import PostFeed from "./PostFeed";
 
 import supabase from "../config/supabaseClient";
+import NewPostButton from "./NewPostButton";
+import NewPostModal from "./NewPostModal";
 
 export default function LandingPage() {
   const navigate = useNavigate();
   const [fetchError, setFetchError] = useState(null);
   const [posts, setPosts] = useState(null);
+  const [postModal, setPostModal] = useState(false);
 
   useEffect(() => {
     fetchPosts();
@@ -18,11 +21,11 @@ export default function LandingPage() {
   const fetchPosts = async () => {
     const { data, error } = await supabase.from("Posts").select();
 
-    // if (error) {
-    //   setFetchError("Could not fetch");
-    //   console.log(error);
-    //   setPosts(null);
-    // }
+    if (error) {
+      setFetchError("Could not fetch");
+      console.log(error);
+      setPosts(null);
+    }
 
     if (data) {
       setPosts(data);
@@ -48,6 +51,8 @@ export default function LandingPage() {
         Go to Feed
       </Button> */}
       {posts && <PostFeed posts={posts} />}
+      <NewPostButton />
+      <NewPostModal />
     </Stack>
   );
 }
