@@ -37,15 +37,6 @@ export default function LandingPage() {
         Dyd
       </h1>
       <h2 className="text-center text-secondary">Share what you dyd.</h2>
-
-      {/* <Button
-        onClick={() => {
-          navigate("/feed");
-        }}
-        className="w-25 mx-auto"
-      >
-        Go to Feed
-      </Button> */}
       {posts && <PostFeed posts={posts} />}
     </Stack>
   );

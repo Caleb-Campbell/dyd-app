@@ -1,12 +1,16 @@
 import React from "react";
+import supabase from "../config/supabaseClient";
 import { Nav, ButtonGroup, Button } from "react-bootstrap";
-import LogoutButton from "./LogoutButton";
 import { useNavigate } from "react-router";
 
 import profilePlaceholder from "../assets/profile_placeholder.png";
 
-export default function NavBar() {
+export default function NavBar({ openLogin }) {
   const navigate = useNavigate();
+
+  async function signOut() {
+    const { error } = await supabase.auth.signOut();
+  }
 
   return (
     <Nav className="justify-content-between p-3">
@@ -15,7 +19,7 @@ export default function NavBar() {
           style={{ width: "2em" }}
           src={profilePlaceholder}
           onClick={() => {
-            navigate("profile-view");
+            navigate("/profile");
           }}
         />
       </Nav.Item>
@@ -28,8 +32,8 @@ export default function NavBar() {
       </Nav.Item>
       <Nav.Item>
         <ButtonGroup>
-          <Button>Login</Button>
-          <LogoutButton>Logout</LogoutButton>
+          <Button onClick={openLogin}>Login</Button>
+          <Button onClick={signOut}>Logout</Button>
         </ButtonGroup>
       </Nav.Item>
     </Nav>
