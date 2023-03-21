@@ -9,22 +9,27 @@ import PostFeed from "./components/PostFeed";
 import ProfileView from "./components/ProfileView";
 import NewPostButton from "./components/NewPostButton";
 import NewPostModal from "./components/NewPostModal";
+import LoginModal from "./components/LoginModal";
 
 //utils
 
 function App() {
   const [newPostModal, setNewPostModal] = useState(false);
+  const [loginModal, setLoginModal] = useState(true);
 
   const toggleModal = () => {
     setNewPostModal(!newPostModal);
   };
 
-  const newPost = () => {};
+  const toggleLogin = () => {
+    setLoginModal(!loginModal);
+  };
 
   return (
     <>
       <Stack>
         <NavBar />
+        <LoginModal toggle={toggleLogin} show={loginModal} />
       </Stack>
       <Routes>
         <Route exact path="/" element={<LandingPage />} />

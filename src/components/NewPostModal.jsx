@@ -18,6 +18,7 @@ export default function NewPostModal({ show, toggle }) {
   const handleChanges = (e) => {
     if (e.target.id === "title") {
       setTitle(e.target.value);
+      on;
     }
     if (e.target.id === "link") {
       setLink(e.target.value);

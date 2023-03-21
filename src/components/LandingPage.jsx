@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Stack } from "react-bootstrap";
 import { useNavigate } from "react-router";
-import LoginButton from "./LoginButton";
 import PostFeed from "./PostFeed";
 
 import supabase from "../config/supabaseClient";
@@ -38,7 +37,6 @@ export default function LandingPage() {
         Dyd
       </h1>
       <h2 className="text-center text-secondary">Share what you dyd.</h2>
-      <LoginButton width="25" />
 
       {/* <Button
         onClick={() => {

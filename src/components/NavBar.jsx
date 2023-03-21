@@ -1,6 +1,5 @@
 import React from "react";
-import { Nav, ButtonGroup } from "react-bootstrap";
-import LoginButton from "./LoginButton";
+import { Nav, ButtonGroup, Button } from "react-bootstrap";
 import LogoutButton from "./LogoutButton";
 import { useNavigate } from "react-router";
 
@@ -29,7 +28,7 @@ export default function NavBar() {
       </Nav.Item>
       <Nav.Item>
         <ButtonGroup>
-          <LoginButton>Login</LoginButton>
+          <Button>Login</Button>
           <LogoutButton>Logout</LogoutButton>
         </ButtonGroup>
       </Nav.Item>
