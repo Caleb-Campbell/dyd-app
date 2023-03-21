@@ -5,11 +5,12 @@ import { useNavigate } from "react-router";
 
 import profilePlaceholder from "../assets/profile_placeholder.png";
 
-export default function NavBar({ openLogin }) {
+export default function NavBar({ openLogin, setUserAuth }) {
   const navigate = useNavigate();
 
   async function signOut() {
     const { error } = await supabase.auth.signOut();
+    setUserAuth(false);
   }
 
   return (

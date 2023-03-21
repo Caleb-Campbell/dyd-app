@@ -9,7 +9,7 @@ import {
   Button,
 } from "react-bootstrap";
 
-export default function NewPostModal({ show, toggle }) {
+export default function NewPostModal({ show, toggle, userAuth }) {
   const [title, setTitle] = useState("");
   const [link, setLink] = useState("");
   const [description, setDescription] = useState("");
@@ -30,12 +30,14 @@ export default function NewPostModal({ show, toggle }) {
 
   const submitNewPost = (e) => {
     e.preventDefault();
-    const newRow = {
-      title: title,
-      post_img_link: link,
-      caption: description,
-    };
-    insertPost(newRow);
+    if (userAuth) {
+      const newRow = {
+        title: title,
+        post_img_link: link,
+        caption: description,
+      };
+      insertPost(newRow);
+    }
   };
 
   const insertPost = async (newPost) => {
